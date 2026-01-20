@@ -1,5 +1,8 @@
 
 import React, { useState } from 'react';
+import Badge from '../components/ui/Badge';
+import Button from '../components/ui/Button';
+import { Input } from '../components/ui/Form';
 
 interface LoginProps {
   onNavigate: (page: string) => void;
@@ -10,84 +13,73 @@ const Login: React.FC<LoginProps> = ({ onNavigate }) => {
   const [formData, setFormData] = useState({
     username: '',
     password: '',
-    confirmPassword: '',
     fullName: ''
   });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    alert('Login Successful! Welcome back.');
+    alert('Authorized! Access granted to the technical uplink.');
   };
 
   return (
     <div className="min-h-screen flex items-center justify-center py-20 px-6 bg-slate-50 animate-in fade-in duration-1000 relative">
       <div className="max-w-6xl w-full flex bg-white rounded-[3.5rem] shadow-2xl overflow-hidden border border-slate-100 relative z-10">
-        
+
         {/* Left Side: Form */}
         <div className="w-full lg:w-1/2 p-12 lg:p-20 flex flex-col justify-center">
           <div className="mb-12">
-            <div className="inline-block px-3 py-1 bg-indigo-50 border border-indigo-100 rounded-lg text-indigo-600 text-[9px] font-bold uppercase tracking-widest mb-6">
-              [ ACCOUNT ACCESS ]
-            </div>
+            <Badge className="mb-6">ACCOUNT ACCESS</Badge>
             <h1 className="text-4xl lg:text-5xl font-bold text-slate-900 tracking-tight mb-4 font-futuristic uppercase">
               {isLogin ? 'Welcome Back' : 'Create Account'}
             </h1>
             <p className="text-slate-500 font-bold uppercase text-[10px] tracking-widest">
-              {isLogin 
-                ? 'Enter your credentials to sign in.' 
+              {isLogin
+                ? 'Enter your credentials to sign in.'
                 : 'Join our developer network today.'}
             </p>
           </div>
 
           <form onSubmit={handleSubmit} id="login-form" className="space-y-6">
             {!isLogin && (
-              <div className="space-y-2">
-                <label className="text-[10px] font-bold text-indigo-600 uppercase tracking-widest ml-1">Full Name</label>
-                <input
-                  id="login-fullName"
-                  type="text"
-                  required
-                  placeholder="Jane Doe"
-                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-6 py-5 text-slate-900 focus:border-indigo-400 focus:outline-none transition-all text-sm placeholder:text-slate-400"
-                  value={formData.fullName}
-                  onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                />
-              </div>
+              <Input
+                label="Full Name"
+                id="login-fullName"
+                required
+                placeholder="Jane Doe"
+                value={formData.fullName}
+                onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
+              />
             )}
 
-            <div className="space-y-2">
-              <label className="text-[10px] font-bold text-indigo-600 uppercase tracking-widest ml-1">Email Address</label>
-              <input
-                id="login-email"
-                type="email"
-                required
-                placeholder="email@example.com"
-                className="w-full bg-slate-50 border border-slate-200 rounded-xl px-6 py-5 text-slate-900 focus:border-indigo-400 focus:outline-none transition-all text-sm placeholder:text-slate-400"
-                value={formData.username}
-                onChange={(e) => setFormData({ ...formData, username: e.target.value })}
-              />
-            </div>
+            <Input
+              label="Email Address"
+              id="login-email"
+              type="email"
+              required
+              placeholder="email@example.com"
+              value={formData.username}
+              onChange={(e) => setFormData({ ...formData, username: e.target.value })}
+            />
 
-            <div className="space-y-2">
-              <label className="text-[10px] font-bold text-indigo-600 uppercase tracking-widest ml-1">Password</label>
-              <input
-                id="login-password"
-                type="password"
-                required
-                placeholder="••••••••"
-                className="w-full bg-slate-50 border border-slate-200 rounded-xl px-6 py-5 text-slate-900 focus:border-indigo-400 focus:outline-none transition-all text-sm placeholder:text-slate-400"
-                value={formData.password}
-                onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-              />
-            </div>
+            <Input
+              label="Password"
+              id="login-password"
+              type="password"
+              required
+              placeholder="••••••••"
+              value={formData.password}
+              onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+            />
 
-            <button
+            <Button
               id="login-submit"
               type="submit"
-              className="w-full bg-indigo-600 text-white py-6 rounded-2xl font-bold text-lg uppercase tracking-widest hover:bg-indigo-700 transition-all shadow-xl active:scale-95 mt-6"
+              variant="primary"
+              size="lg"
+              className="w-full mt-6"
             >
               {isLogin ? 'Sign In' : 'Sign Up'}
-            </button>
+            </Button>
           </form>
 
           <div className="mt-12 pt-8 border-t border-slate-100 text-center">
@@ -106,12 +98,12 @@ const Login: React.FC<LoginProps> = ({ onNavigate }) => {
         {/* Right Side: Branding */}
         <div className="hidden lg:flex lg:w-1/2 relative bg-indigo-600 p-20 flex-col justify-between border-l border-slate-100 overflow-hidden text-white">
           <div className="relative z-10">
-            <div 
-              className="flex items-center gap-4 cursor-pointer"
+            <div
+              className="flex items-center gap-4 cursor-pointer group"
               onClick={() => onNavigate('home')}
             >
-              <div className="w-12 h-12 bg-white/10 border border-white/20 rounded-lg flex items-center justify-center">
-                <i className="fa-solid fa-j text-white text-2xl"></i>
+              <div className="w-12 h-12 bg-white/10 border border-white/20 rounded-lg flex items-center justify-center transition-all group-hover:bg-white group-hover:text-indigo-600">
+                <i className="fa-solid fa-j text-2xl"></i>
               </div>
               <span className="text-3xl font-bold tracking-tighter uppercase font-futuristic">Junction Rails</span>
             </div>

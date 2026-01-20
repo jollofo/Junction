@@ -22,8 +22,8 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-4">
         <div className="glass-panel rounded-2xl px-6 flex justify-between items-center h-20 border border-slate-200/50 shadow-xl">
           {/* Logo */}
-          <div 
-            className="flex items-center gap-3 cursor-pointer group" 
+          <div
+            className="flex items-center gap-3 cursor-pointer group"
             onClick={() => handlePageClick('home')}
           >
             <div className="relative w-9 h-9 flex items-center justify-center">
@@ -36,17 +36,17 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
               Junction Rails
             </span>
           </div>
-          
+
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-8">
-            <button 
+            <button
               onClick={() => handlePageClick('home')}
               className={`text-[11px] font-bold uppercase tracking-widest transition-all ${currentPage === 'home' ? 'text-indigo-600' : 'text-slate-500 hover:text-slate-900'}`}
             >
               Home
             </button>
-            
-            <button 
+
+            <button
               onClick={() => handlePageClick('about')}
               className={`text-[11px] font-bold uppercase tracking-widest transition-all ${currentPage === 'about' ? 'text-indigo-600' : 'text-slate-500 hover:text-slate-900'}`}
             >
@@ -55,47 +55,50 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
 
             {/* Services Dropdown */}
             <div className="relative group">
-              <button 
+              <button
                 className={`flex items-center gap-1 text-[11px] font-bold uppercase tracking-widest transition-all py-4 ${isServicesActive ? 'text-indigo-600' : 'text-slate-500 hover:text-slate-900'}`}
               >
                 Services <i className="fa-solid fa-chevron-down text-[8px] mt-0.5 opacity-50"></i>
               </button>
-              
+
               <div className="absolute left-0 mt-0 w-64 bg-white border border-slate-100 rounded-xl shadow-2xl py-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform -translate-y-2 group-hover:translate-y-0">
+                <button onClick={() => handlePageClick('how-it-works')} className={`w-full text-left px-5 py-3 text-[11px] font-bold uppercase tracking-widest hover:bg-slate-50 transition-all flex items-center gap-4 ${currentPage === 'how-it-works' ? 'text-indigo-600' : 'text-slate-600'}`}>
+                  <i className="fa-solid fa-home opacity-50 w-4"></i> How It Works
+                </button>
                 <button onClick={() => handlePageClick('staff-augmentation')} className={`w-full text-left px-5 py-3 text-[11px] font-bold uppercase tracking-widest hover:bg-slate-50 transition-all flex items-center gap-4 ${currentPage === 'staff-augmentation' ? 'text-indigo-600' : 'text-slate-600'}`}>
-                   <i className="fa-solid fa-microchip opacity-50 w-4"></i> Staff Augmentation
+                  <i className="fa-solid fa-microchip opacity-50 w-4"></i> Staff Augmentation
                 </button>
                 <button onClick={() => handlePageClick('technical-expertise')} className={`w-full text-left px-5 py-3 text-[11px] font-bold uppercase tracking-widest hover:bg-slate-50 transition-all flex items-center gap-4 ${currentPage === 'technical-expertise' ? 'text-indigo-600' : 'text-slate-600'}`}>
-                   <i className="fa-solid fa-code-branch opacity-50 w-4"></i> Technical Expertise
+                  <i className="fa-solid fa-code-branch opacity-50 w-4"></i> Technical Expertise
                 </button>
                 <button onClick={() => handlePageClick('quality-assurance')} className={`w-full text-left px-5 py-3 text-[11px] font-bold uppercase tracking-widest hover:bg-slate-50 transition-all flex items-center gap-4 ${currentPage === 'quality-assurance' ? 'text-indigo-600' : 'text-slate-600'}`}>
-                   <i className="fa-solid fa-shield-halved opacity-50 w-4"></i> Quality Assurance
+                  <i className="fa-solid fa-shield-halved opacity-50 w-4"></i> Quality Assurance
                 </button>
               </div>
             </div>
 
             {/* For Developers Dropdown */}
             <div className="relative group">
-              <button 
+              <button
                 className={`flex items-center gap-1 text-[11px] font-bold uppercase tracking-widest transition-all py-4 ${isDevelopersActive ? 'text-indigo-600' : 'text-slate-500 hover:text-slate-900'}`}
               >
                 For Developers <i className="fa-solid fa-chevron-down text-[8px] mt-0.5 opacity-50"></i>
               </button>
-              
+
               <div className="absolute left-0 mt-0 w-64 bg-white border border-slate-100 rounded-xl shadow-2xl py-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform -translate-y-2 group-hover:translate-y-0">
                 <button onClick={() => handlePageClick('developer-opportunity')} className={`w-full text-left px-5 py-3 text-[11px] font-bold uppercase tracking-widest hover:bg-slate-50 transition-all flex items-center gap-4 ${currentPage === 'developer-opportunity' ? 'text-indigo-600' : 'text-slate-600'}`}>
-                   <i className="fa-solid fa-briefcase opacity-50 w-4"></i> Opportunity
+                  <i className="fa-solid fa-briefcase opacity-50 w-4"></i> Opportunity
                 </button>
                 <button onClick={() => handlePageClick('fellowship-program')} className={`w-full text-left px-5 py-3 text-[11px] font-bold uppercase tracking-widest hover:bg-slate-50 transition-all flex items-center gap-4 ${currentPage === 'fellowship-program' ? 'text-indigo-600' : 'text-slate-600'}`}>
-                   <i className="fa-solid fa-graduation-cap opacity-50 w-4"></i> Fellowship
+                  <i className="fa-solid fa-graduation-cap opacity-50 w-4"></i> Fellowship
                 </button>
                 <button onClick={() => handlePageClick('apply-developer')} className={`w-full text-left px-5 py-3 text-[11px] font-bold uppercase tracking-widest hover:bg-slate-50 transition-all flex items-center gap-4 ${currentPage === 'apply-developer' ? 'text-indigo-600' : 'text-slate-600'}`}>
-                   <i className="fa-solid fa-file-signature opacity-50 w-4"></i> Apply Now
+                  <i className="fa-solid fa-file-signature opacity-50 w-4"></i> Apply Now
                 </button>
               </div>
             </div>
 
-            <button 
+            <button
               onClick={() => handlePageClick('contact')}
               className={`text-[11px] font-bold uppercase tracking-widest transition-all ${currentPage === 'contact' ? 'text-indigo-600' : 'text-slate-500 hover:text-slate-900'}`}
             >
@@ -105,13 +108,13 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
 
           {/* Action Buttons */}
           <div className="hidden lg:flex items-center space-x-4">
-            <button 
+            <button
               onClick={() => handlePageClick('login')}
               className="text-[11px] font-bold uppercase tracking-widest text-slate-500 hover:text-slate-900 transition-all"
             >
               Login
             </button>
-            <button 
+            <button
               onClick={() => handlePageClick('get-started')}
               className="bg-gradient-to-r from-[#6366f1] to-[#4f46e5] text-white px-7 py-3 rounded-xl text-[11px] font-black uppercase tracking-widest hover:shadow-[0_0_20px_rgba(79,70,229,0.5)] transition-all active:scale-95 shadow-lg border border-indigo-400/20"
             >
@@ -121,12 +124,12 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
 
           {/* Mobile Menu Toggle */}
           <div className="lg:hidden">
-             <button 
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="text-slate-900 text-xl focus:outline-none w-10 h-10 flex items-center justify-center bg-slate-50 rounded-lg active:scale-90 transition-transform"
-              >
-                <i className={`fa-solid ${isMobileMenuOpen ? 'fa-xmark' : 'fa-bars-staggered'}`}></i>
-             </button>
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="text-slate-900 text-xl focus:outline-none w-10 h-10 flex items-center justify-center bg-slate-50 rounded-lg active:scale-90 transition-transform"
+            >
+              <i className={`fa-solid ${isMobileMenuOpen ? 'fa-xmark' : 'fa-bars-staggered'}`}></i>
+            </button>
           </div>
         </div>
       </div>
@@ -138,7 +141,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
             <button onClick={() => handlePageClick('home')} className={`block w-full text-left font-bold uppercase tracking-widest text-[12px] py-2 transition-colors ${currentPage === 'home' ? 'text-indigo-600' : 'text-slate-900'}`}>Home</button>
             <button onClick={() => handlePageClick('about')} className={`block w-full text-left font-bold uppercase tracking-widest text-[12px] py-2 transition-colors ${currentPage === 'about' ? 'text-indigo-600' : 'text-slate-900'}`}>About</button>
           </div>
-          
+
           <div className="space-y-4 pt-4 border-t border-slate-100">
             <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em] mb-4">Capabilities</p>
             <div className="grid gap-4">

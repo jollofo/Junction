@@ -1,5 +1,10 @@
 
 import React, { useState } from 'react';
+import Badge from '../components/ui/Badge';
+import Card from '../components/ui/Card';
+import SectionHeader from '../components/ui/SectionHeader';
+import Button from '../components/ui/Button';
+import { Input, Select } from '../components/ui/Form';
 
 const ApplyAsDeveloper: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -15,23 +20,28 @@ const ApplyAsDeveloper: React.FC = () => {
     alert('Thank you for your application! We typically respond within 5 business days.');
   };
 
+  const tracks = [
+    { value: 'frontend', label: 'Frontend Development' },
+    { value: 'backend', label: 'Backend Development' },
+    { value: 'fullstack', label: 'Full Stack Development' },
+    { value: 'devops', label: 'DevOps & Infrastructure' },
+  ];
+
   return (
     <div className="animate-in fade-in duration-700 bg-white min-h-screen">
-      {/* Unified Hero Section */}
+      {/* Hero Section */}
       <section className="relative pt-40 pb-24 lg:pt-56 lg:pb-32 overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <img 
-            src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&q=80&w=1920" 
+          <img
+            src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&q=80&w=1920"
             className="w-full h-full object-cover opacity-10"
             alt="Developer Focus"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-white via-white/80 to-transparent"></div>
         </div>
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <div className="max-w-4xl">
-            <span className="inline-block px-4 py-1.5 bg-indigo-50 border border-indigo-100 rounded-lg text-indigo-600 text-[11px] font-bold mb-10 tracking-[0.4em] uppercase font-futuristic">
-              [ DIRECT_PLACEMENT_PORTAL ]
-            </span>
+        <div className="max-w-7xl mx-auto px-6 relative z-10 animate-fade-in-up">
+          <div className="max-w-4xl text-left">
+            <Badge className="mb-10">DIRECT_PLACEMENT_PORTAL</Badge>
             <h1 className="text-5xl lg:text-8xl font-bold mb-10 leading-[1.1] tracking-tight font-futuristic uppercase text-slate-900">
               Opportunity <br />
               <span className="text-indigo-600 italic">Beyond Borders</span>
@@ -46,71 +56,54 @@ const ApplyAsDeveloper: React.FC = () => {
       {/* Application Form Section */}
       <section className="py-24 lg:py-40 relative z-20 -mt-24 lg:-mt-40">
         <div className="max-w-4xl mx-auto px-6">
-          <div className="bg-white rounded-[3.5rem] border border-slate-100 p-12 lg:p-20 shadow-2xl">
-            <div className="mb-16">
+          <Card className="shadow-2xl animate-scale-in" padding="xl">
+            <div className="mb-16 text-center">
               <h2 className="text-3xl lg:text-5xl font-bold text-slate-900 mb-6 tracking-tight font-futuristic uppercase leading-tight">Developer Registry</h2>
               <p className="text-slate-400 font-bold text-[11px] uppercase tracking-widest">Secure Encryption Enabled // Profile Verification Required</p>
             </div>
 
             <form onSubmit={handleSubmit} id="apply-developer-form" className="space-y-10">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div className="space-y-3">
-                  <label className="text-[10px] font-bold text-indigo-600 uppercase tracking-widest ml-1">First Name</label>
-                  <input 
-                    id="firstName"
-                    required 
-                    type="text" 
-                    placeholder="e.g. John" 
-                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-6 py-5 text-slate-900 focus:border-indigo-400 focus:outline-none transition-all text-sm placeholder:text-slate-400" 
-                    onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
-                  />
-                </div>
-                <div className="space-y-3">
-                  <label className="text-[10px] font-bold text-indigo-600 uppercase tracking-widest ml-1">Last Name</label>
-                  <input 
-                    id="lastName"
-                    required 
-                    type="text" 
-                    placeholder="e.g. Smith" 
-                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-6 py-5 text-slate-900 focus:border-indigo-400 focus:outline-none transition-all text-sm placeholder:text-slate-400" 
-                    onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
-                  />
-                </div>
-              </div>
-
-              <div className="space-y-3">
-                <label className="text-[10px] font-bold text-indigo-600 uppercase tracking-widest ml-1">Email Address</label>
-                <input 
-                  id="email"
-                  required 
-                  type="email" 
-                  placeholder="john.doe@tech-uplink.sl" 
-                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-6 py-5 text-slate-900 focus:border-indigo-400 focus:outline-none transition-all text-sm placeholder:text-slate-400" 
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                <Input
+                  label="First Name"
+                  id="firstName"
+                  required
+                  placeholder="e.g. John"
+                  onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
+                />
+                <Input
+                  label="Last Name"
+                  id="lastName"
+                  required
+                  placeholder="e.g. Smith"
+                  onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
                 />
               </div>
 
-              <div className="space-y-3">
-                <label className="text-[10px] font-bold text-indigo-600 uppercase tracking-widest ml-1">Primary Technical Track</label>
-                <select 
-                  id="track"
-                  required 
-                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-6 py-5 text-slate-900 focus:border-indigo-400 focus:outline-none transition-all font-bold appearance-none cursor-pointer text-sm"
-                  onChange={(e) => setFormData({ ...formData, track: e.target.value })}
-                >
-                  <option value="frontend">Frontend Development</option>
-                  <option value="backend">Backend Development</option>
-                  <option value="fullstack">Full Stack Development</option>
-                  <option value="devops">DevOps & Infrastructure</option>
-                </select>
-              </div>
+              <Input
+                label="Email Address"
+                id="email"
+                required
+                type="email"
+                placeholder="john.doe@tech-uplink.sl"
+                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+              />
+
+              <Select
+                label="Primary Technical Track"
+                id="track"
+                required
+                options={tracks}
+                value={formData.track}
+                onChange={(e) => setFormData({ ...formData, track: e.target.value })}
+              />
 
               <div className="flex items-start gap-4">
                 <div className="relative w-6 h-6 shrink-0 mt-0.5">
-                  <input 
+                  <input
                     id="agreement"
-                    required 
-                    type="checkbox" 
+                    required
+                    type="checkbox"
                     className="peer absolute inset-0 opacity-0 cursor-pointer z-10"
                     checked={formData.agreement}
                     onChange={(e) => setFormData({ ...formData, agreement: e.target.checked })}
@@ -125,27 +118,29 @@ const ApplyAsDeveloper: React.FC = () => {
               </div>
 
               <div className="pt-6">
-                <button 
+                <Button
                   id="submit-btn"
-                  type="submit" 
-                  className="w-full bg-indigo-600 text-white font-bold text-xl py-6 rounded-2xl hover:bg-indigo-700 transition-all shadow-xl shadow-indigo-100 active:scale-95 uppercase tracking-widest"
+                  type="submit"
+                  variant="primary"
+                  size="xl"
+                  className="w-full"
                 >
                   Submit Application
-                </button>
+                </Button>
               </div>
 
               <div className="flex items-center justify-center gap-8 opacity-40 pt-4">
-                 <div className="flex items-center gap-2">
-                    <i className="fa-solid fa-shield-halved text-indigo-600 text-[10px]"></i>
-                    <span className="text-[9px] font-bold tracking-widest uppercase">Privacy_Protocol_v4</span>
-                 </div>
-                 <div className="flex items-center gap-2">
-                    <i className="fa-solid fa-bolt text-indigo-600 text-[10px]"></i>
-                    <span className="text-[9px] font-bold tracking-widest uppercase">Fast_Track_Review</span>
-                 </div>
+                <div className="flex items-center gap-2">
+                  <i className="fa-solid fa-shield-halved text-indigo-600 text-[10px]"></i>
+                  <span className="text-[9px] font-bold tracking-widest uppercase">Privacy_Protocol_v4</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <i className="fa-solid fa-bolt text-indigo-600 text-[10px]"></i>
+                  <span className="text-[9px] font-bold tracking-widest uppercase">Fast_Track_Review</span>
+                </div>
               </div>
             </form>
-          </div>
+          </Card>
         </div>
       </section>
     </div>
