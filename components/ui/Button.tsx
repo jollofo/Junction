@@ -15,7 +15,7 @@ const Button: React.FC<ButtonProps> = ({
     children,
     ...props
 }) => {
-    const baseStyles = "font-bold uppercase tracking-widest transition-all active:scale-95 hover:translate-y-[-2px] inline-flex items-center justify-center gap-2";
+    const baseStyles = "font-bold uppercase tracking-widest transition-all active:scale-95 hover:translate-y-[-2px] inline-flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:bg-slate-300 disabled:text-slate-500 disabled:border-slate-300 disabled:shadow-none disabled:translate-y-0 disabled:scale-100";
 
     const variants = {
         primary: "bg-indigo-600 text-white hover:bg-indigo-700 shadow-2xl shadow-indigo-100",

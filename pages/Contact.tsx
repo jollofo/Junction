@@ -123,6 +123,119 @@ const Contact: React.FC = () => {
                   onChange={(e) => setFormData({ ...formData, workEmail: e.target.value })}
                 />
               </div>
+
+              <div className="space-y-6 lg:space-y-8">
+                <Input
+                  label="Street Address"
+                  id="contact-address1"
+                  placeholder="123 Silicon Valley Way"
+                  value={formData.address1}
+                  onChange={(e) => setFormData({ ...formData, address1: e.target.value })}
+                />
+                <Input
+                  id="contact-address2"
+                  placeholder="Suite, Floor, etc. (Optional)"
+                  value={formData.address2}
+                  onChange={(e) => setFormData({ ...formData, address2: e.target.value })}
+                />
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+                <Input
+                  label="City *"
+                  id="contact-city"
+                  required
+                  placeholder="Freetown"
+                  value={formData.city}
+                  onChange={(e) => setFormData({ ...formData, city: e.target.value })}
+                />
+                <Input
+                  label="Postal Code"
+                  id="contact-postalCode"
+                  placeholder="00232"
+                  value={formData.postalCode}
+                  onChange={(e) => setFormData({ ...formData, postalCode: e.target.value })}
+                />
+                <Select
+                  label="Country *"
+                  id="contact-country"
+                  required
+                  options={commonCountries}
+                  placeholder="Select Country"
+                  value={formData.country}
+                  onChange={(e) => setFormData({ ...formData, country: e.target.value })}
+                />
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+                <Select
+                  label="Inquiry Type *"
+                  id="contact-inquiryType"
+                  required
+                  options={inquiryTypes}
+                  placeholder="What can we help you with?"
+                  value={formData.inquiryType}
+                  onChange={(e) => setFormData({ ...formData, inquiryType: e.target.value })}
+                />
+                <Input
+                  label="How did you hear about us?"
+                  id="contact-howHeard"
+                  placeholder="Referral, LinkedIn, etc."
+                  value={formData.howHeard}
+                  onChange={(e) => setFormData({ ...formData, howHeard: e.target.value })}
+                />
+              </div>
+
+              <Textarea
+                label="Message *"
+                id="contact-message"
+                required
+                placeholder="Tell us about your project or inquiry..."
+                rows={5}
+                value={formData.message}
+                onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setFormData({ ...formData, message: e.target.value })}
+              />
+
+              <div className="flex items-start gap-3">
+                <div className="flex items-center h-5">
+                  <input
+                    id="consent"
+                    name="consent"
+                    type="checkbox"
+                    required
+                    checked={formData.consent}
+                    onChange={(e) => setFormData({ ...formData, consent: e.target.checked })}
+                    className="h-5 w-5 rounded border-slate-300 text-indigo-600 focus:ring-indigo-600 cursor-pointer"
+                  />
+                </div>
+                <div className="text-sm leading-6">
+                  <label htmlFor="consent" className="font-medium text-slate-700 cursor-pointer">
+                    I agree to the privacy policy and consent to being contacted regarding my inquiry. *
+                  </label>
+                </div>
+              </div>
+
+              <div className="pt-4">
+                <Button
+                  type="submit"
+                  variant="primary"
+                  size="xl"
+                  className="w-full"
+                  disabled={
+                    !formData.firstName ||
+                    !formData.lastName ||
+                    !formData.company ||
+                    !formData.workEmail ||
+                    !formData.city ||
+                    !formData.country ||
+                    !formData.inquiryType ||
+                    !formData.message ||
+                    !formData.consent
+                  }
+                >
+                  Send Message
+                </Button>
+              </div>
             </form>
           </div>
         </div>
