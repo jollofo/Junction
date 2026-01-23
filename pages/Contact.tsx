@@ -84,7 +84,7 @@ const Contact: React.FC = () => {
               </div>
             </div>
 
-            <form onSubmit={handleSubmit} id="contact-form" className="space-y-8 lg:space-y-10" method="POST" netlify>
+            <form onSubmit={handleSubmit} id="contact-form" className="space-y-8 lg:space-y-10" name="contact-form" method="POST" netlify>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
                 <Input
                   label="First Name *"
