@@ -84,9 +84,10 @@ const Contact: React.FC = () => {
               </div>
             </div>
 
-            <form onSubmit={handleSubmit} id="contact-form" className="space-y-8 lg:space-y-10" name="contact-form" method="POST" netlify>
+            <form onSubmit={handleSubmit} id="contact-form" className="space-y-8 lg:space-y-10" name="contact-form" method="POST" data-netlify="true">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
                 <Input
+                  name="firstName"
                   label="First Name *"
                   id="contact-firstName"
                   required
@@ -95,6 +96,7 @@ const Contact: React.FC = () => {
                   onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
                 />
                 <Input
+                  name="lastName"
                   label="Last Name *"
                   id="contact-lastName"
                   required
@@ -106,6 +108,7 @@ const Contact: React.FC = () => {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
                 <Input
+                  name="company"
                   label="Company *"
                   id="contact-company"
                   required
@@ -114,6 +117,7 @@ const Contact: React.FC = () => {
                   onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                 />
                 <Input
+                  name="workEmail"
                   label="Work Email *"
                   id="contact-email"
                   type="email"
