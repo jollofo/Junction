@@ -24,7 +24,20 @@ const Contact: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    alert('Message Sent! Our team will respond to your inquiry shortly.');
+
+    const encode = (data: any) => {
+      return Object.keys(data)
+        .map((key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+        .join('&');
+    };
+
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: encode({ 'form-name': 'contact-form', ...formData }),
+    })
+      .then(() => alert('Message Sent! Our team will respond to your inquiry shortly.'))
+      .catch((error) => alert(error));
   };
 
   const inquiryTypes = [
