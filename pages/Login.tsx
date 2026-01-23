@@ -4,8 +4,6 @@ import Badge from '../components/ui/Badge';
 import Button from '../components/ui/Button';
 import { Input } from '../components/ui/Form';
 
-import { supabase } from '../lib/supabase';
-
 interface LoginProps {
   onNavigate: (page: string) => void;
 }
@@ -21,13 +19,6 @@ const Login: React.FC<LoginProps> = ({ onNavigate }) => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     alert('Authorized! Access granted to the technical uplink.');
-  };
-
-  const handleGoogleLogin = async () => {
-    const { error } = await supabase.auth.signInWithOAuth({
-      provider: 'google',
-    });
-    if (error) alert(error.message);
   };
 
   return (
@@ -88,25 +79,6 @@ const Login: React.FC<LoginProps> = ({ onNavigate }) => {
               className="w-full mt-6"
             >
               {isLogin ? 'Sign In' : 'Sign Up'}
-            </Button>
-
-            <div className="relative my-6">
-              <div className="absolute inset-0 flex items-center">
-                <span className="w-full border-t border-slate-200"></span>
-              </div>
-              <div className="relative flex justify-center text-xs uppercase">
-                <span className="bg-white px-2 text-slate-500 font-bold tracking-widest">Or continue with</span>
-              </div>
-            </div>
-
-            <Button
-              type="button"
-              variant="outline"
-              size="lg"
-              className="w-full"
-              onClick={handleGoogleLogin}
-            >
-              <i className="fa-brands fa-google mr-2 text-indigo-600"></i> Google
             </Button>
           </form>
 

@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -14,26 +14,8 @@ import ApplyAsDeveloper from './pages/ApplyAsDeveloper';
 import FellowshipProgram from './pages/FellowshipProgram';
 import HowItWorks from './pages/HowItWorks';
 
-import { Session } from '@supabase/supabase-js';
-import { supabase } from './lib/supabase';
-
 const App: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<string>('home');
-  const [session, setSession] = useState<Session | null>(null);
-
-  useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setSession(session);
-    });
-
-    const {
-      data: { subscription },
-    } = supabase.auth.onAuthStateChange((_event, session) => {
-      setSession(session);
-    });
-
-    return () => subscription.unsubscribe();
-  }, []);
 
   const handleNavigate = (page: string) => {
     setCurrentPage(page);
