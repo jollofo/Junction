@@ -66,10 +66,6 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
                                 className="w-full aspect-video object-cover transition-transform duration-1000 group-hover:scale-105"
                             />
                             <div className="absolute inset-0 bg-indigo-600/20 mix-blend-multiply"></div>
-                            <div className="absolute bottom-10 left-10 text-white font-futuristic">
-                                <span className="block text-4xl font-bold uppercase">Silicon</span>
-                                <span className="block text-6xl font-black italic -mt-2">Mountains</span>
-                            </div>
                         </div>
                     </div>
                     <div className="w-full lg:w-1/2">
