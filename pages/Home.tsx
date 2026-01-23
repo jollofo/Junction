@@ -18,7 +18,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
                     <div className="w-full lg:w-3/5 text-left opacity-0 animate-fade-in-up">
                         <Badge className="mb-8 lg:mb-10">GLOBAL_TALENT_UPLINK</Badge>
                         <h1 className="text-4xl sm:text-6xl lg:text-[100px] font-extrabold text-slate-900 leading-[1.1] lg:leading-[0.95] mb-8 lg:mb-10 tracking-tight font-futuristic uppercase pb-2">
-                            When <span className="text-indigo-600 italic">talent </span>meets<br className="hidden sm:block" />
+                            When <span className="text-indigo-600 italic">talent </span>meets <br className="hidden sm:block" />
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-cyan-500">opportunity</span>
                         </h1>
 
@@ -65,7 +65,6 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
                                 alt="Freetown Innovation"
                                 className="w-full aspect-video object-cover transition-transform duration-1000 group-hover:scale-105"
                             />
-                            <div className="absolute inset-0 bg-indigo-600/20 mix-blend-multiply"></div>
                         </div>
                     </div>
                     <div className="w-full lg:w-1/2">
