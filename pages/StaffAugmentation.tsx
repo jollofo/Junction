@@ -62,7 +62,7 @@ const StaffAugmentation: React.FC<StaffAugmentationProps> = ({ onNavigate }) => 
           <div className="w-full lg:w-1/2">
             <div className="relative rounded-[4rem] overflow-hidden shadow-2xl group">
               <img
-                src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&q=80&w=1200"
+                src="/images/verified_integration.jpeg"
                 alt="Direct Integration"
                 className="w-full object-cover transition-transform duration-1000 group-hover:scale-105"
               />

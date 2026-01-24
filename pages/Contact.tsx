@@ -140,6 +140,17 @@ const Contact: React.FC = () => {
                   onChange={(e) => setFormData({ ...formData, workEmail: e.target.value })}
                 />
               </div>
+              <Textarea
+                name="message"
+                label="Message *"
+                id="contact-message"
+                required
+                placeholder="Tell us about your project or inquiry..."
+                rows={5}
+                value={formData.message}
+                onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setFormData({ ...formData, message: e.target.value })}
+              />
+
               <div className="pt-4">
                 <Button
                   type="submit"
@@ -150,7 +161,8 @@ const Contact: React.FC = () => {
                     !formData.firstName ||
                     !formData.lastName ||
                     !formData.company ||
-                    !formData.workEmail
+                    !formData.workEmail ||
+                    !formData.message
                   }
                 >
                   Send Message
