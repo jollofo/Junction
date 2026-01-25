@@ -4,22 +4,16 @@ import Button from '../components/ui/Button';
 import SectionHeader from '../components/ui/SectionHeader';
 import Badge from '../components/ui/Badge';
 import { Input, Select, Textarea } from '../components/ui/Form';
+import Modal from '../components/ui/Modal';
 
 const Contact: React.FC = () => {
+  const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
     company: '',
     workEmail: '',
-    address1: '',
-    address2: '',
-    city: '',
-    postalCode: '',
-    country: '',
-    inquiryType: '',
-    message: '',
-    howHeard: '',
-    consent: false
+    message: ''
   });
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -36,7 +30,24 @@ const Contact: React.FC = () => {
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: encode({ 'form-name': 'contact-form', ...formData }),
     })
-      .then(() => alert('Message Sent! Our team will respond to your inquiry shortly.'))
+      .then(() => {
+        setIsSuccessModalOpen(true);
+        setFormData({
+          firstName: '',
+          lastName: '',
+          company: '',
+          workEmail: '',
+          address1: '',
+          address2: '',
+          city: '',
+          postalCode: '',
+          country: '',
+          inquiryType: '',
+          message: '',
+          howHeard: '',
+          consent: false
+        });
+      })
       .catch((error) => alert(error));
   };
 

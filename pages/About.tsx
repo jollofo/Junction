@@ -16,7 +16,7 @@ const About: React.FC<AboutProps> = ({ onNavigate }) => {
       name: 'Kakpindi Jamiru',
       role: 'FOUNDER & CEO',
       bio: "Freetown, Sierra Leone → Global Impact. Ten years scaling Series A/B startups across healthcare, fintech, and SaaS. Kakpindi built Junction Rails to normalize Sierra Leone as an elite tech hub.",
-      image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=800',
+      image: '/images/Kakpindi_Jamiru.png',
       id: 'F-01',
       links: { linkedin: '#', 'x-twitter': '#' }
     },
@@ -24,7 +24,7 @@ const About: React.FC<AboutProps> = ({ onNavigate }) => {
       name: 'Daniel Salifu Samura',
       role: 'FOUNDER & CTO',
       bio: "Master of technology and education. Daniel believes deeply that talent is everywhere, but opportunity is not. He oversees the technical curriculum that produces elite talent.",
-      image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=800',
+      image: '/images/Daniel_Samura.png',
       id: 'F-02',
       links: { linkedin: '#', github: '#' }
     }
@@ -36,7 +36,7 @@ const About: React.FC<AboutProps> = ({ onNavigate }) => {
       role: 'Lead Software Developer',
       bio: "Abdulai designs and implements digital solutions that drive innovation and improve lives. His work focuses on systems that strengthen learning, health, and community development.",
       quote: "Technology is most powerful when it empowers people to create change.",
-      image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=800',
+      image: '/images/Abdulai_Kamara.png',
       id: 'E-01',
       links: { github: '#', linkedin: '#' }
     },
@@ -45,7 +45,7 @@ const About: React.FC<AboutProps> = ({ onNavigate }) => {
       role: 'Software Developer',
       bio: "A journey from nowhere to the Networked World. Amadu grew from a self-taught enthusiast into an ICT leader, shaping digital systems that power innovation across Sierra Leone.",
       quote: "Technology is about turning imagination into tools that move communities forward.",
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=800',
+      image: '/images/Amadu_Bah.png',
       id: 'E-02',
       links: { github: '#', 'x-twitter': '#' }
     },
@@ -54,7 +54,7 @@ const About: React.FC<AboutProps> = ({ onNavigate }) => {
       role: 'Software Developer',
       bio: "Taught himself to code on a borrowed laptop in Freetown. After facing geographic barriers, Junction Rails recognized his potential, honing his skills for global success.",
       quote: "Talent, when given opportunity, can transcend borders.",
-      image: 'https://images.unsplash.com/photo-1531384441138-2736e62e0919?auto=format&fit=crop&q=80&w=800',
+      image: '/images/Gibrilla_Kanu.png',
       id: 'E-03',
       links: { github: '#', linkedin: '#' }
     }

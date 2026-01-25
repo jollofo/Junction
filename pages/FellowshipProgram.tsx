@@ -6,12 +6,24 @@ import SectionHeader from '../components/ui/SectionHeader';
 import Button from '../components/ui/Button';
 import { Input, Textarea } from '../components/ui/Form';
 
+import Modal from '../components/ui/Modal';
+
 interface FellowshipProgramProps {
   onNavigate?: (page: string) => void;
 }
 
 const FellowshipProgram: React.FC<FellowshipProgramProps> = ({ onNavigate }) => {
   const [selectedSkills, setSelectedSkills] = useState<string[]>([]);
+  const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    bio: '',
+    linkedin: '',
+    github: '',
+    portfolio: ''
+  });
 
   const techOptions = [
     'JavaScript', 'TypeScript', 'Python', 'Java', 'Go', 'Rust',
@@ -27,7 +39,36 @@ const FellowshipProgram: React.FC<FellowshipProgramProps> = ({ onNavigate }) => 
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    alert('Fellowship Application Submitted! Our admissions team will review your profile and respond via the provided Uplink Email.');
+
+    const encode = (data: any) => {
+      return Object.keys(data)
+        .map((key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+        .join('&');
+    };
+
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: encode({
+        'form-name': 'fellowship-form',
+        ...formData,
+        skills: selectedSkills.join(', ')
+      }),
+    })
+      .then(() => {
+        setIsSuccessModalOpen(true);
+        setFormData({
+          firstName: '',
+          lastName: '',
+          email: '',
+          bio: '',
+          linkedin: '',
+          github: '',
+          portfolio: ''
+        });
+        setSelectedSkills([]);
+      })
+      .catch((error) => alert(error));
   };
 
   return (
@@ -108,7 +149,7 @@ const FellowshipProgram: React.FC<FellowshipProgramProps> = ({ onNavigate }) => 
               <p className="text-slate-400 font-bold uppercase tracking-widest text-[11px]">Session_2025 // Rolling Admissions Active</p>
             </div>
 
-            <form onSubmit={handleSubmit} id="fellowship-form" className="space-y-16">
+            <form onSubmit={handleSubmit} id="fellowship-form" className="space-y-16" name="fellowship-form" method="POST" data-netlify="true">
 
               {/* Identity Section */}
               <div className="p-8 lg:p-14 bg-slate-50 rounded-[3rem] border border-slate-100 relative overflow-hidden group hover:border-indigo-200 transition-all">
@@ -117,11 +158,33 @@ const FellowshipProgram: React.FC<FellowshipProgramProps> = ({ onNavigate }) => 
                   Identity Registry
                 </h3>
                 <div className="grid md:grid-cols-2 gap-8">
-                  <Input label="First Name" required placeholder="John" />
-                  <Input label="Last Name" required placeholder="Doe" />
+                  <Input
+                    name="firstName"
+                    label="First Name"
+                    required
+                    placeholder="John"
+                    value={formData.firstName}
+                    onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
+                  />
+                  <Input
+                    name="lastName"
+                    label="Last Name"
+                    required
+                    placeholder="Doe"
+                    value={formData.lastName}
+                    onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
+                  />
                 </div>
                 <div className="mt-8">
-                  <Input label="Uplink Email Address" required type="email" placeholder="john.doe@tech-uplink.sl" />
+                  <Input
+                    name="email"
+                    label="Uplink Email Address"
+                    required
+                    type="email"
+                    placeholder="john.doe@tech-uplink.sl"
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  />
                 </div>
               </div>
 
@@ -137,8 +200,8 @@ const FellowshipProgram: React.FC<FellowshipProgramProps> = ({ onNavigate }) => 
                       key={tech}
                       onClick={() => toggleSkill(tech)}
                       className={`p-4 rounded-xl border transition-all cursor-pointer flex justify-between items-center active:scale-95 ${selectedSkills.includes(tech)
-                          ? 'bg-indigo-600 border-indigo-600 text-white shadow-lg'
-                          : 'bg-white border-slate-200 text-slate-600 hover:border-indigo-300'
+                        ? 'bg-indigo-600 border-indigo-600 text-white shadow-lg'
+                        : 'bg-white border-slate-200 text-slate-600 hover:border-indigo-300'
                         }`}
                     >
                       <span className="text-[11px] font-bold uppercase tracking-widest">{tech}</span>
@@ -155,10 +218,13 @@ const FellowshipProgram: React.FC<FellowshipProgramProps> = ({ onNavigate }) => 
                   Professional Narrative
                 </h3>
                 <Textarea
+                  name="bio"
                   label="Short Bio & Motivation"
                   required
                   rows={6}
                   placeholder="Tell us about your journey, your biggest technical challenge, and why you want to join the Junction Rails Fellowship..."
+                  value={formData.bio}
+                  onChange={(e) => setFormData({ ...formData, bio: e.target.value })}
                 />
                 <p className="text-[9px] font-bold text-slate-400 uppercase tracking-widest ml-1 mt-2">Limit: 500 characters</p>
               </div>
@@ -175,9 +241,12 @@ const FellowshipProgram: React.FC<FellowshipProgramProps> = ({ onNavigate }) => 
                       <i className="fa-brands fa-linkedin text-lg"></i>
                     </div>
                     <Input
+                      name="linkedin"
                       type="url"
                       placeholder="https://linkedin.com/in/yourprofile"
                       className="pl-16 bg-white"
+                      value={formData.linkedin}
+                      onChange={(e) => setFormData({ ...formData, linkedin: e.target.value })}
                     />
                   </div>
                   <div className="relative group/input">
@@ -185,9 +254,12 @@ const FellowshipProgram: React.FC<FellowshipProgramProps> = ({ onNavigate }) => 
                       <i className="fa-brands fa-github text-lg"></i>
                     </div>
                     <Input
+                      name="github"
                       type="url"
                       placeholder="https://github.com/yourusername"
                       className="pl-16 bg-white"
+                      value={formData.github}
+                      onChange={(e) => setFormData({ ...formData, github: e.target.value })}
                     />
                   </div>
                   <div className="relative group/input">
@@ -195,9 +267,12 @@ const FellowshipProgram: React.FC<FellowshipProgramProps> = ({ onNavigate }) => 
                       <i className="fa-solid fa-globe text-lg"></i>
                     </div>
                     <Input
+                      name="portfolio"
                       type="url"
                       placeholder="https://yourportfolio.com"
                       className="pl-16 bg-white"
+                      value={formData.portfolio}
+                      onChange={(e) => setFormData({ ...formData, portfolio: e.target.value })}
                     />
                   </div>
                 </div>
@@ -217,6 +292,35 @@ const FellowshipProgram: React.FC<FellowshipProgramProps> = ({ onNavigate }) => 
           </Card>
         </div>
       </section>
+
+      <Modal
+        isOpen={isSuccessModalOpen}
+        onClose={() => setIsSuccessModalOpen(false)}
+        title="Application Received"
+      >
+        <div className="flex flex-col items-center text-center space-y-6">
+          <div className="w-20 h-20 bg-green-50 rounded-full flex items-center justify-center mb-2">
+            <i className="fa-solid fa-check text-3xl text-green-500 animate-pulse"></i>
+          </div>
+
+          <div className="space-y-2">
+            <p className="text-lg font-medium text-slate-900">
+              Fellowship Application Submitted!
+            </p>
+            <p className="text-slate-500 leading-relaxed max-w-xs mx-auto">
+              Our admissions team will review your profile and respond via the provided Uplink Email within 5-7 business days.
+            </p>
+          </div>
+
+          <Button
+            variant="primary"
+            onClick={() => setIsSuccessModalOpen(false)}
+            className="w-full"
+          >
+            Close Confirmation
+          </Button>
+        </div>
+      </Modal>
     </div>
   );
 };

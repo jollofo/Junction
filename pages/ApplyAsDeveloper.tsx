@@ -5,8 +5,10 @@ import Card from '../components/ui/Card';
 import SectionHeader from '../components/ui/SectionHeader';
 import Button from '../components/ui/Button';
 import { Input, Select } from '../components/ui/Form';
+import Modal from '../components/ui/Modal';
 
 const ApplyAsDeveloper: React.FC = () => {
+  const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -17,7 +19,29 @@ const ApplyAsDeveloper: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    alert('Thank you for your application! We typically respond within 5 business days.');
+
+    const encode = (data: any) => {
+      return Object.keys(data)
+        .map((key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+        .join('&');
+    };
+
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: encode({ 'form-name': 'apply-developer-form', ...formData }),
+    })
+      .then(() => {
+        setIsSuccessModalOpen(true);
+        setFormData({
+          firstName: '',
+          lastName: '',
+          email: '',
+          track: 'fullstack',
+          agreement: false
+        });
+      })
+      .catch((error) => alert(error));
   };
 
   const tracks = [
@@ -62,20 +86,24 @@ const ApplyAsDeveloper: React.FC = () => {
               <p className="text-slate-400 font-bold text-[11px] uppercase tracking-widest">Secure Encryption Enabled // Profile Verification Required</p>
             </div>
 
-            <form onSubmit={handleSubmit} id="apply-developer-form" className="space-y-10">
+            <form onSubmit={handleSubmit} id="apply-developer-form" className="space-y-10" name="apply-developer-form" method="POST" data-netlify="true">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <Input
                   label="First Name"
                   id="firstName"
+                  name="firstName"
                   required
                   placeholder="e.g. John"
+                  value={formData.firstName}
                   onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
                 />
                 <Input
                   label="Last Name"
                   id="lastName"
+                  name="lastName"
                   required
                   placeholder="e.g. Smith"
+                  value={formData.lastName}
                   onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
                 />
               </div>
@@ -83,15 +111,18 @@ const ApplyAsDeveloper: React.FC = () => {
               <Input
                 label="Email Address"
                 id="email"
+                name="email"
                 required
                 type="email"
                 placeholder="john.doe@tech-uplink.sl"
+                value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
               />
 
               <Select
                 label="Primary Technical Track"
                 id="track"
+                name="track"
                 required
                 options={tracks}
                 value={formData.track}
@@ -102,6 +133,7 @@ const ApplyAsDeveloper: React.FC = () => {
                 <div className="relative w-6 h-6 shrink-0 mt-0.5">
                   <input
                     id="agreement"
+                    name="agreement"
                     required
                     type="checkbox"
                     className="peer absolute inset-0 opacity-0 cursor-pointer z-10"
@@ -143,6 +175,35 @@ const ApplyAsDeveloper: React.FC = () => {
           </Card>
         </div>
       </section>
+
+      <Modal
+        isOpen={isSuccessModalOpen}
+        onClose={() => setIsSuccessModalOpen(false)}
+        title="Application Received"
+      >
+        <div className="flex flex-col items-center text-center space-y-6">
+          <div className="w-20 h-20 bg-green-50 rounded-full flex items-center justify-center mb-2">
+            <i className="fa-solid fa-check text-3xl text-green-500 animate-pulse"></i>
+          </div>
+
+          <div className="space-y-2">
+            <p className="text-lg font-medium text-slate-900">
+              Developer Application Submitted!
+            </p>
+            <p className="text-slate-500 leading-relaxed max-w-xs mx-auto">
+              We've received your profile details. Our recruitment team will review your application and respond within 5 business days.
+            </p>
+          </div>
+
+          <Button
+            variant="primary"
+            onClick={() => setIsSuccessModalOpen(false)}
+            className="w-full"
+          >
+            Close Confirmation
+          </Button>
+        </div>
+      </Modal>
     </div>
   );
 };
