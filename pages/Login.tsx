@@ -102,8 +102,8 @@ const Login: React.FC<LoginProps> = ({ onNavigate }) => {
               className="flex items-center gap-4 cursor-pointer group"
               onClick={() => onNavigate('home')}
             >
-              <div className="w-12 h-12 bg-white/10 border border-white/20 rounded-lg flex items-center justify-center transition-all group-hover:bg-white group-hover:text-indigo-600">
-                <i className="fa-solid fa-j text-2xl"></i>
+              <div className="w-12 h-12 bg-white/10 border border-white/20 rounded-lg flex items-center justify-center transition-all group-hover:bg-white overflow-hidden">
+                <img src="/images/logo.png" alt="Junction Rails Logo" className="w-full h-full object-contain" />
               </div>
               <span className="text-3xl font-bold tracking-tighter uppercase font-futuristic">Junction Rails</span>
             </div>

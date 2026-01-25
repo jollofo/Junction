@@ -13,8 +13,8 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                     <div className="col-span-1 md:col-span-2 lg:col-span-2 space-y-10 lg:space-y-16">
                         <div className="space-y-8">
                             <div className="flex items-center gap-4">
-                                <div className="w-10 h-10 lg:w-14 lg:h-14 bg-indigo-50 rounded-xl flex items-center justify-center border border-indigo-100">
-                                    <i className="fa-solid fa-j text-indigo-600 text-xl lg:text-3xl font-bold"></i>
+                                <div className="w-10 h-10 lg:w-14 lg:h-14 bg-indigo-50 rounded-xl flex items-center justify-center border border-indigo-100 overflow-hidden">
+                                    <img src="/images/logo.png" alt="Junction Rails Logo" className="w-full h-full object-contain" />
                                 </div>
                                 <span className="text-xl lg:text-4xl font-bold text-slate-900 tracking-tighter uppercase font-futuristic">Junction Rails</span>
                             </div>

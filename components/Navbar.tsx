@@ -28,8 +28,8 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage }) => {
           >
             <div className="relative w-9 h-9 flex items-center justify-center">
               <div className="absolute inset-0 bg-indigo-500/10 blur-lg rounded-full animate-pulse"></div>
-              <div className="w-10 h-10 bg-indigo-50 rounded-lg flex items-center justify-center border border-indigo-100">
-                <i className="fa-solid fa-j text-indigo-600 text-xl font-bold"></i>
+              <div className="w-10 h-10 bg-indigo-50 rounded-lg flex items-center justify-center border border-indigo-100 overflow-hidden">
+                <img src="/images/logo.png" alt="Junction Rails Logo" className="w-full h-full object-contain" />
               </div>
             </div>
             <span className="text-xl font-bold tracking-tight text-slate-900 group-hover:text-indigo-600 transition-colors font-futuristic uppercase">
