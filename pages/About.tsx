@@ -63,32 +63,27 @@ const About: React.FC<AboutProps> = ({ onNavigate }) => {
   return (
     <div className="bg-white animate-in fade-in duration-1000">
       {/* Header */}
-      <section className="relative pt-32 pb-16 sm:pt-40 sm:pb-20 lg:pt-56 lg:pb-32 overflow-hidden">
+      <section className="relative pt-32 pb-16 sm:pt-40 sm:pb-20 lg:pt-56 lg:pb-20 overflow-hidden">
         <div className="absolute inset-0 bg-slate-50/50"></div>
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="max-w-5xl text-left">
             <Badge className="mb-10">CORE_MANIFESTO</Badge>
-            <h1 className="text-4xl lg:text-8xl font-bold mb-10 leading-[1.1] tracking-tight font-futuristic uppercase pb-4 text-slate-900">
+            <h1 className="text-4xl lg:text-8xl font-bold mb-16 leading-[1.1] tracking-tight font-futuristic uppercase pb-4 text-slate-900">
               Curiosity, Courage, <br /> and the <span className="text-indigo-600 italic">Spirit to Build.</span>
             </h1>
-            <p className="text-xl lg:text-3xl text-slate-600 leading-relaxed max-w-4xl font-medium">
+            <p className="text-xl lg:text-3xl text-slate-600 leading-relaxed max-w-4xl font-medium mb-4">
               We are building the technical infrastructure for the next billion users, starting with the resilient talent pool in Sierra Leone.
             </p>
+            <p className="text-xl lg:text-3xl text-slate-600 leading-relaxed max-w-4xl font-medium mb-4">In Sierra Leone, a young engineer named Kelvin Doe built batteries, generators, and even a community radio station using discarded scraps-powered by curiosity and courage.</p>
+            <p className="text-xl lg:text-3xl text-slate-600 leading-relaxed max-w-4xl font-medium mb-4">His story captured the world's attention, not because of luck, but because it revealed something deeply African: a relentless spirit to build, to innovate, and to uplift others even when the odds seem impossible.</p>
+            <p className="text-xl lg:text-3xl text-slate-600 leading-relaxed max-w-4xl font-medium mb-4">That same spirit lives in the heart of Junction Rails. Every day, brilliant minds graduate from African universities, armed with talent, drive, and potential. But without access to the global stage, their brilliance often goes unseen.</p>
+            <p className="text-xl lg:text-3xl text-slate-600 leading-relaxed max-w-4xl font-medium">We're here to change that. We're building bridges across oceans, proving that determination and creativity can transcend geography.</p>
           </div>
         </div>
       </section>
 
-      <section className="py-16 lg:py-40 bg-white">
-        <div className="max-w-7xl mx-auto px-6 space-y-12">
-          <p className="text-xl lg:text-3xl text-slate-600 leading-relaxed max-w-4xl font-medium">In Sierra Leone, a young engineer named Kelvin Doe built batteries, generators, and even a community radio station using discarded scraps—powered by curiosity and courage.</p>
-          <p className="text-xl lg:text-3xl text-slate-600 leading-relaxed max-w-4xl font-medium">His story captured the world's attention, not because of luck, but because it revealed something deeply African: a relentless spirit to build, to innovate, and to uplift others even when the odds seem impossible.</p>
-          <p className="text-xl lg:text-3xl text-slate-600 leading-relaxed max-w-4xl font-medium">That same spirit lives in the heart of Junction Solutions. Every day, brilliant minds graduate from African universities, armed with talent, drive, and potential. But without access to the global stage, their brilliance often goes unseen.</p>
-          <p className="text-xl lg:text-3xl text-slate-600 leading-relaxed max-w-4xl font-medium">We're here to change that. We're building bridges across oceans, proving that determination and creativity can transcend geography.</p>
-        </div>
-      </section>
-
       {/* Visionaries Section */}
-      <section className="py-16 lg:py-40 bg-slate-50/50">
+      <section className="py-16 lg:py-32 bg-slate-50/50">
         <div className="max-w-7xl mx-auto px-6">
           <SectionHeader
             badge="THE_ARCHITECTS"
