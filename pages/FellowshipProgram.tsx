@@ -103,18 +103,18 @@ const FellowshipProgram: React.FC<FellowshipProgramProps> = ({ onNavigate }) => 
           <div className="w-full lg:w-1/2 grid grid-cols-2 gap-6">
             <div className="space-y-6">
               <div className="rounded-[2.5rem] overflow-hidden shadow-xl aspect-[4/5] group">
-                <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=800" alt="Whiteboarding" className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" />
+                <img src="images/fellowship1.jpeg" alt="Whiteboarding" className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" />
               </div>
               <div className="rounded-[2.5rem] overflow-hidden shadow-xl aspect-square group">
-                <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=800" alt="Collaboration" className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" />
+                <img src="images/fellowship3.jpeg" alt="Collaboration" className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" />
               </div>
             </div>
             <div className="pt-12 space-y-6">
               <div className="rounded-[2.5rem] overflow-hidden shadow-xl aspect-square group">
-                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=800" alt="Team Work" className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" />
+                <img src="images/fellowship4.jpeg" alt="Team Work" className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" />
               </div>
               <div className="rounded-[2.5rem] overflow-hidden shadow-xl aspect-[4/5] group">
-                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800" alt="Pitching" className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" />
+                <img src="images/fellowship2.jpeg" alt="Pitching" className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" />
               </div>
             </div>
           </div>

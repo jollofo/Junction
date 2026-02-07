@@ -71,9 +71,6 @@ const About: React.FC<AboutProps> = ({ onNavigate }) => {
             <h1 className="text-4xl lg:text-8xl font-bold mb-16 leading-[1.1] tracking-tight font-futuristic uppercase pb-4 text-slate-900">
               Curiosity, Courage, <br /> and the <span className="text-indigo-600 italic">Spirit to Build.</span>
             </h1>
-            <p className="text-xl lg:text-3xl text-slate-600 leading-relaxed max-w-4xl font-medium mb-4">
-              We are building the technical infrastructure for the next billion users, starting with the resilient talent pool in Sierra Leone.
-            </p>
             <p className="text-xl lg:text-3xl text-slate-600 leading-relaxed max-w-4xl font-medium mb-4">In Sierra Leone, a young engineer named Kelvin Doe built batteries, generators, and even a community radio station using discarded scraps-powered by curiosity and courage.</p>
             <p className="text-xl lg:text-3xl text-slate-600 leading-relaxed max-w-4xl font-medium mb-4">His story captured the world's attention, not because of luck, but because it revealed something deeply African: a relentless spirit to build, to innovate, and to uplift others even when the odds seem impossible.</p>
             <p className="text-xl lg:text-3xl text-slate-600 leading-relaxed max-w-4xl font-medium mb-4">That same spirit lives in the heart of Junction Rails. Every day, brilliant minds graduate from African universities, armed with talent, drive, and potential. But without access to the global stage, their brilliance often goes unseen.</p>
